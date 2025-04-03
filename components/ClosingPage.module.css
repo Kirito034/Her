@@ -1,0 +1,222 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  color: white;
+}
+
+.starsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--gold, #FFD700);
+  font-family: 'Dancing Script', cursive;
+}
+
+.message {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.signature {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: var(--deep-pink, #FF1493);
+  margin-top: 2rem;
+}
+
+.signature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heartContainer {
+  margin: 2rem 0;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  width: 50px;
+  height: 50px;
+  background-color: var(--deep-pink, #FF1493);
+  position: relative;
+  transform: rotate(45deg);
+  animation: heartbeat 1.5s infinite;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: var(--deep-pink, #FF1493);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart:before {
+  top: -25px;
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  left: -25px;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: rotate(45deg) scale(1);
+  }
+  14% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  28% {
+    transform: rotate(45deg) scale(1);
+  }
+  42% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  70% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* Stars animation */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 5s infinite;
+}
+
+.heartStar {
+  background-color: var(--deep-pink, #FF1493);
+  animation: pulse 2s infinite;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0;
+  animation: explode 1s forwards;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 1;
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .content {
+    width: 90%;
+    padding: 1.5rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .message {
+    font-size: 1rem;
+  }
+  
+  .signature {
+    font-size: 1.5rem;
+  }
+}
+

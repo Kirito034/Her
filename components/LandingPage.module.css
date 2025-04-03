@@ -1,0 +1,219 @@
+.pageContainer {
+  background: linear-gradient(135deg, var(--light-pink), var(--ivory));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  text-align: center;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--deep-pink);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: shimmer 3s infinite linear;
+  background: linear-gradient(90deg, var(--deep-pink), var(--gold), var(--deep-pink));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.title:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.lotusContainer {
+  height: 150px;
+  position: relative;
+  margin: 30px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.lotusWrapper {
+  position: absolute;
+  bottom: 0;
+  animation: bloom 2s forwards;
+}
+
+.message {
+  margin: 30px 0;
+  font-size: 1.2rem;
+  color: var(--dark-text);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.message p {
+  margin-bottom: 10px;
+}
+
+.message p:first-child {
+  font-size: 1.4rem;
+  color: var(--deep-pink);
+  font-weight: 500;
+}
+
+.buttonContainer {
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.decorativeElements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.decorativeHeart {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--deep-pink);
+  transform: rotate(45deg);
+  animation: heartbeat 2s infinite;
+}
+
+.decorativeHeart:before,
+.decorativeHeart:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--deep-pink);
+  border-radius: 50%;
+}
+
+.decorativeHeart:before {
+  top: -10px;
+  left: 0;
+}
+
+.decorativeHeart:after {
+  top: 0;
+  left: -10px;
+}
+
+.decorativeStar {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid var(--gold);
+  transform: rotate(35deg);
+  animation: float 3s infinite;
+}
+
+.decorativeStar:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid var(--gold);
+  transform: rotate(-70deg);
+  top: -13px;
+  left: -10px;
+}
+
+.decorativeStar:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid var(--gold);
+  transform: rotate(-140deg);
+  top: 3px;
+  left: -21px;
+}
+
+.decorativeCircle {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+  animation: rotate 10s linear infinite;
+}
+
+.floatingElements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.floatingElement {
+  position: absolute;
+  font-size: 24px;
+  animation: float 6s infinite ease-in-out;
+}
+
+.floatingPetal {
+  position: absolute;
+  border-radius: 50% 0 50% 0;
+  opacity: 0.7;
+  animation: float 6s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  .message p:first-child {
+    font-size: 1.2rem;
+  }
+}
+

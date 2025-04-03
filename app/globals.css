@@ -1,0 +1,461 @@
+:root {
+  --primary-pink: #ffb6c1;
+  --deep-pink: #ff69b4;
+  --light-pink: #ffd1dc;
+  --gold: #d4af37;
+  --light-gold: #f0e68c;
+  --ivory: #fffff0;
+  --dark-text: #4a4a4a;
+  --red: #ff4d4d;
+  --green: #4caf50;
+  --blue: #2196f3;
+  --purple: #9c27b0;
+  --orange: #ff9800;
+  --yellow: #ffeb3b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+button {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.romantic-button {
+  background-color: var(--deep-pink);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.romantic-button:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.romantic-button:hover:before {
+  left: 100%;
+}
+
+.romantic-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(255, 105, 180, 0.4);
+}
+
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.marathi-text {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+}
+
+/* Animation for flowers */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Animation for fireworks */
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Falling animation for game */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Bloom animation for lotus */
+@keyframes bloom {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fireworks container */
+.fireworks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: explode 1s forwards;
+}
+
+/* Flower petals */
+.flower {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 1;
+  animation: float 6s infinite ease-in-out;
+}
+
+/* CSS Lotus Flower */
+.css-lotus {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 20px auto;
+}
+
+.petal {
+  position: absolute;
+  width: 30px;
+  height: 60px;
+  background: var(--light-pink);
+  border-radius: 30px 30px 0 0;
+  transform-origin: bottom center;
+}
+
+.petal:nth-child(1) {
+  transform: rotate(0deg);
+}
+.petal:nth-child(2) {
+  transform: rotate(45deg);
+}
+.petal:nth-child(3) {
+  transform: rotate(90deg);
+}
+.petal:nth-child(4) {
+  transform: rotate(135deg);
+}
+.petal:nth-child(5) {
+  transform: rotate(180deg);
+}
+.petal:nth-child(6) {
+  transform: rotate(225deg);
+}
+.petal:nth-child(7) {
+  transform: rotate(270deg);
+}
+.petal:nth-child(8) {
+  transform: rotate(315deg);
+}
+
+.lotus-center {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* CSS Peacock */
+.css-peacock {
+  position: relative;
+  width: 120px;
+  height: 150px;
+  margin: 20px auto;
+}
+
+.peacock-body {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  background: #5d4037;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  top: 20px;
+  left: 30px;
+}
+
+.peacock-head {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #5d4037;
+  border-radius: 50%;
+  top: 0;
+  left: 45px;
+}
+
+.peacock-crest {
+  position: absolute;
+  width: 15px;
+  height: 25px;
+  background: var(--deep-pink);
+  border-radius: 50% 50% 0 0;
+  top: -20px;
+  left: 52px;
+}
+
+.peacock-feather {
+  position: absolute;
+  width: 20px;
+  height: 80px;
+  background: linear-gradient(to bottom, #2196f3, #4caf50);
+  border-radius: 50% 50% 0 0;
+  transform-origin: bottom center;
+}
+
+.peacock-feather:nth-child(1) {
+  transform: rotate(-60deg) translateY(40px);
+}
+.peacock-feather:nth-child(2) {
+  transform: rotate(-30deg) translateY(40px);
+}
+.peacock-feather:nth-child(3) {
+  transform: rotate(0deg) translateY(40px);
+}
+.peacock-feather:nth-child(4) {
+  transform: rotate(30deg) translateY(40px);
+}
+.peacock-feather:nth-child(5) {
+  transform: rotate(60deg) translateY(40px);
+}
+
+.peacock-eye {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #2196f3 10%, #4caf50 30%, #9c27b0 60%, #2196f3 100%);
+  border-radius: 50%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* CSS Ghungroo (Dance Bell) */
+.css-ghungroo {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.bell-body {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  top: 5px;
+  left: 5px;
+}
+
+.bell-bottom {
+  position: absolute;
+  width: 20px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 0 0 5px 5px;
+  bottom: 5px;
+  left: 10px;
+}
+
+.bell-clapper {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #5d4037;
+  border-radius: 50%;
+  bottom: 0;
+  left: 17px;
+}
+
+/* Heart shape */
+.heart {
+  position: relative;
+  width: 50px;
+  height: 45px;
+  margin: 20px auto;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 40px;
+  background: var(--deep-pink);
+  border-radius: 50px 50px 0 0;
+}
+
+.heart:before {
+  transform: rotate(-45deg);
+  transform-origin: 100% 100%;
+  left: 25px;
+}
+
+.heart:after {
+  transform: rotate(45deg);
+  transform-origin: 0 100%;
+  left: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .romantic-button {
+    padding: 10px 25px;
+    font-size: 16px;
+  }
+}
+
